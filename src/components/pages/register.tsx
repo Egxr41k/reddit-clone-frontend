@@ -2,6 +2,7 @@
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'urql';
+import { useRegisterMutation } from '../../generated/graphql';
 
 interface IRegisterProps {}
 
@@ -10,25 +11,10 @@ interface IUsernamePassword {
   password: string;
 }
 
-const REGISTER_MUT = `
-mutation :ogin($username: String!, $password: String!) {
-  register(options: {username: $username, password: $password}) {
-    errors {
-      field
-      message
-    }
-    user {
-      id
-      username
-    }
-  }
-}
-`;
-
 const Register = (props: IRegisterProps) => {
   const { register, handleSubmit } = useForm<IUsernamePassword>();
 
-  const [, mutation] = useMutation(REGISTER_MUT);
+  const [, mutation] = useRegisterMutation();
 
   const onSubmit: SubmitHandler<IUsernamePassword> = (
     data: IUsernamePassword,
