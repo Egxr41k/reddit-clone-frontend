@@ -5,9 +5,9 @@ import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Register',
+  title: 'login',
 };
 
 export default function Page() {
-  return <Auth type="register" />;
+  return <Auth type="login" />;
 }
