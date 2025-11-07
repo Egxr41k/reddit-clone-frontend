@@ -7,7 +7,7 @@ const Navbar = () => {
   const [{ data, fetching }] = useMeQuery();
 
   return (
-    <div className="bg-red-500">
+    <div className="bg-orange-300">
       <div className="ml-auto flex justify-end p-4">
         {!fetching &&
           (data?.me ? (
