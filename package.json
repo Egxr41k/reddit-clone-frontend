@@ -10,6 +10,7 @@
 		"gen": "graphql-codegen --config codegen.ts"
 	},
 	"dependencies": {
+		"@urql/exchange-graphcache": "^8.1.0",
 		"graphql": "^16.12.0",
 		"next": "16.0.1",
 		"react": "19.2.0",

@@ -12,6 +12,9 @@ export default function UrqlProvider({
     exchanges: [cacheExchange, fetchExchange],
     fetchOptions: {
       credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
   });
 
