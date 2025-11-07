@@ -10,6 +10,9 @@ export default function UrqlProvider({
   const client = new Client({
     url: 'http://localhost:4000/graphql',
     exchanges: [cacheExchange, fetchExchange],
+    fetchOptions: {
+      credentials: 'include',
+    },
   });
 
   return <Provider value={client}>{children}</Provider>;
