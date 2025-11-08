@@ -1,10 +1,11 @@
 'use client';
 
-import { useMeQuery } from '@/src/generated/graphql';
+import { useLogoutMutation, useMeQuery } from '@/src/generated/graphql';
 import Link from 'next/link';
 
 const Navbar = () => {
   const [{ data, fetching }] = useMeQuery();
+  const [, logout] = useLogoutMutation();
 
   return (
     <div className="bg-orange-300">
@@ -13,7 +14,9 @@ const Navbar = () => {
           (data?.me ? (
             <>
               <p className="mx-2">{data.me.username}</p>
-              <button className="mx-2">logout</button>
+              <button className="mx-2" onClick={() => logout({})}>
+                logout
+              </button>
             </>
           ) : (
             <>
