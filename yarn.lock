@@ -1923,6 +1923,11 @@
     "@urql/core" "^6.0.0"
     wonka "^6.3.2"
 
+"@urql/next@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@urql/next/-/next-2.0.0.tgz#6cc85a3a888193110d658c2e9473a0b9360c91c7"
+  integrity sha512-X7q/+MOUtX1suaDxGJdgjAqE/eyhcGr1XnTO0VpUnSPdPOkVUKm5RNDIQy4ecupTYKs++1j2YWcmAfLc9R/Gkw==
+
 "@whatwg-node/disposablestack@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@whatwg-node/disposablestack/-/disposablestack-0.0.6.tgz#2064a1425ea66194def6df0c7a1851b6939c82bb"

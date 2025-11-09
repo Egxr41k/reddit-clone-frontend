@@ -5,8 +5,13 @@ const config: CodegenConfig = {
   schema: 'http://localhost:4000/graphql',
   documents: 'src/graphql/**/*.graphql',
   generates: {
-    'src/generated/graphql.ts': {
+    'src/graphql/generated/client.ts': {
       plugins: ['typescript', 'typescript-operations', 'typescript-urql'],
+    },
+    'src/graphql/generated/server.ts': {
+      documents: 'src/graphql/**/*.graphql',
+      plugins: ['typescript', 'typescript-operations', 'typed-document-node'],
+      config: { useTypeImports: true },
     },
   },
 };

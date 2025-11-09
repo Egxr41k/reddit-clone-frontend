@@ -1,6 +1,6 @@
 'use client';
 
-import { useLogoutMutation, useMeQuery } from '@/src/generated/graphql';
+import { useLogoutMutation, useMeQuery } from '@/src/graphql/generated/client';
 import Link from 'next/link';
 
 const Navbar = () => {

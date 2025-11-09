@@ -2,7 +2,10 @@
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Field from '../ui/Field';
-import { useLoginMutation, useRegisterMutation } from '@/src/generated/graphql';
+import {
+  useLoginMutation,
+  useRegisterMutation,
+} from '@/src/graphql/generated/client';
 import { useRouter } from 'next/navigation';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
