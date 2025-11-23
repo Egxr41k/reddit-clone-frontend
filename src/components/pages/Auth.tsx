@@ -11,6 +11,7 @@ import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
 interface IUsernamePassword {
   username: string;
+  email?: string;
   password: string;
 }
 
@@ -37,8 +38,11 @@ const Auth = ({ type }: { type: 'login' | 'register' }) => {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<IUsernamePassword> = async (data) => {
+    const { email, ...dataWithoutEmail } = data;
     const response =
-      type === 'login' ? await login(data) : await register(data);
+      type === 'login'
+        ? await login(dataWithoutEmail)
+        : await register({ ...data, email: email! });
 
     if (response.data.register?.errors) {
       response.data.register.errors.map((error: FieldError) =>
@@ -70,6 +74,15 @@ const Auth = ({ type }: { type: 'login' | 'register' }) => {
           placeholder={'username'}
           error={errors.username?.message}
         />
+        {type === 'register' && (
+          <Field
+            {...formRegister('email', {
+              required: 'email is required',
+            })}
+            placeholder={'email'}
+            error={errors.email?.message}
+          />
+        )}
         <Field
           {...formRegister('password', {
             required: 'Password is required',
@@ -78,16 +91,17 @@ const Auth = ({ type }: { type: 'login' | 'register' }) => {
           placeholder={'password'}
           error={errors.password?.message}
         />
-        <button
-          className="rounded bg-teal-600 px-4 py-2 text-white"
-          type="submit"
-        >
-          {capitalizeFirstLetter(type)}
-        </button>
-        <div>
+
+        <div className="flex gap-5">
+          <button
+            className="rounded bg-teal-600 px-4 py-2 text-white"
+            type="submit"
+          >
+            {capitalizeFirstLetter(type)}
+          </button>
           <button
             type="button"
-            className="mt-3 inline-block text-sm capitalize opacity-20"
+            className="inline-block text-sm capitalize opacity-20"
             onClick={() =>
               router.push(type === 'login' ? '/register' : '/login')
             }
@@ -95,6 +109,15 @@ const Auth = ({ type }: { type: 'login' | 'register' }) => {
             {capitalizeFirstLetter(type === 'login' ? 'register' : 'login')}
           </button>
         </div>
+        {type === 'login' && (
+          <button
+            type="button"
+            className="mt-3 inline-block text-sm text-teal-500 capitalize"
+            onClick={() => router.push('/forgot-password')}
+          >
+            Forgot password
+          </button>
+        )}
       </form>
     </main>
   );
