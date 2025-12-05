@@ -1,6 +1,7 @@
 import { ssrExchange, fetchExchange, createClient } from '@urql/next';
 import { cacheExchange, Cache, QueryInput } from '@urql/exchange-graphcache';
 import {
+  ChangePasswordMutation,
   LoginMutation,
   MeDocument,
   MeQuery,
@@ -47,6 +48,17 @@ function cofigureCache() {
             (result, query) => {
               if (result.register.errors) return query;
               return { me: result.register.user };
+            },
+          );
+        },
+        changePassword: (_result, _args, cache, _info) => {
+          betterUpdateQuery<ChangePasswordMutation, MeQuery>(
+            cache,
+            { query: MeDocument },
+            _result,
+            (result, query) => {
+              if (result.changePassword.errors) return query;
+              return { me: result.changePassword.user };
             },
           );
         },

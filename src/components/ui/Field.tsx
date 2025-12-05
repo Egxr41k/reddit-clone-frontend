@@ -22,7 +22,7 @@ const Field = forwardRef<HTMLInputElement, IField>(
             ].join(' ')}
           />
         </label>
-        {error && <div className="mt-1 text-sm text-red-500">{error}</div>}
+        {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       </div>
     );
   },
