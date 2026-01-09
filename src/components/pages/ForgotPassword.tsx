@@ -50,10 +50,6 @@ const ForgotPassword = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="m-auto rounded-lg bg-white p-8 shadow-sm"
         >
-          {/* <h1 className="mb-4 text-center text-3xl font-semibold capitalize">
-          Change Password
-        </h1> */}
-
           <Field
             {...formRegister('email', {
               required: 'email is required',

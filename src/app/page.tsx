@@ -1,4 +1,5 @@
 import { registerUrql } from '@urql/next/rsc';
+import Link from 'next/link';
 import Navbar from '../components/ui/Navbar';
 import { PostsDocument } from '../graphql/generated/server';
 import { makeClient } from '../provider/makeClient';
@@ -11,6 +12,7 @@ export default async function Home() {
   return (
     <>
       <Navbar />
+      <Link href="/create-post">Create post</Link>
       {!data ? (
         <div>loading...</div>
       ) : (
